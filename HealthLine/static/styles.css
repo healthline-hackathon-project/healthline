@@ -1,0 +1,1051 @@
+.container {
+    display: flex;
+    min-height: 100vh;
+    font-family: "Afacad Flux", sans-serif;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.container.fade-in {
+    opacity: 1;
+}
+
+.welcome-section {
+    text-align: center;
+    margin-top: 170px;
+    padding: 20px;
+    color: #7e7e7e;
+}
+
+.welcome-section h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #7e7e7e;
+    margin-bottom: 20px;
+}
+
+.welcome-section p {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #7e7e7e;
+    margin-top: 10px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f5f5f5;
+    padding: 50px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #e4e5e5;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: #c0c3c3;
+    border-radius: 10px;
+}
+
+.sidebar-button {
+    padding: 20px;
+    border: none;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    min-height: 120px;
+    max-height: 120px;
+    box-sizing: border-box;
+    font-family: "Afacad Flux", sans-serif;
+    text-align: left;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.ask-ai {
+    background-color: #d2691e;
+}
+
+.health-risk {
+    background-color: #28a745;
+}
+
+.bed-checker {
+    background-color: #dc3545;
+}
+
+.health-blogs {
+    background-color: #17a2b8;
+}
+
+.faq {
+    background-color: #007bff;
+}
+
+.creditsandcode {
+    background-color: #574fb0;
+}
+
+.sidebar-button:hover {
+    filter: brightness(1.1);
+}
+
+.content {
+    margin-left: 342px;
+    padding: 40px;
+    background-color: #f5f5f5;
+    flex-grow: 1;
+}
+
+h1 {
+    font-size: 36px;
+    color: #555;
+}
+
+h2 {
+    color: #555;
+}
+
+h3 {
+    color: #555;
+}
+
+p {
+    font-size: 18px;
+    color: #666;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: column-reverse;
+    height: 500px;
+    width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    position: relative;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.message {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin: 5px 0;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #d2691e;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    margin-left: 7px;
+    margin-top: 7px;
+    font-size: 16px;
+    text-align: left;
+    max-width: 60%;
+    align-self: flex-end;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background-color: #ddd;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    margin-left: 7px;
+    margin-top: 7px;
+    font-size: 16px;
+    text-align: left;
+    color: #555;
+    max-width: 60%;
+    align-self: flex-start;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.chat-input-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    outline: none;
+    font-family: "Afacad Flux", sans-serif;
+    font-size: 15px;
+}
+
+input[type="text"]:focus {
+    border-color: #888;
+}
+
+.chat-send-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+    font-family: "Afacad Flux", sans-serif;
+}
+
+.chat-send-button:hover {
+    background-color: #0056b3;
+}
+
+.hospital-checker-container {
+    text-align: center;
+    padding: 30px;
+    width: 70%;
+    margin: 40px auto;
+}
+
+.hospital-checker-container h2 {
+    text-align: center;
+    color: #555;
+    font-size: 35px;
+}
+
+.hospital-checker-container p {
+    text-align: center;
+    color: #666;
+}
+
+.checker-title {
+    font-size: 3rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.checker-instruction {
+    color: #7e7e7e;
+    margin-bottom: 60px;
+}
+
+.hospital-checker-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.form-row {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-label {
+    font-size: 20px;
+    flex-basis: 30%;
+    text-align: right;
+    color: #555;
+    margin-right: 10px;
+}
+
+.form-input {
+    flex-basis: 65%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.check-button {
+    padding: 10px;
+    font-family: "Afacad Flux", sans-serif;
+    font-size: 18px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.check-button:hover {
+    background-color: #218838;
+}
+
+.hospital-results {
+    color: #555;
+    font-size: 22px;
+    margin-top: 80px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.hospital-results ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.hospital-results li {
+    padding: 25px;
+    border-bottom: 2px solid #C0C3C3;
+    margin-top: 35px;
+}
+
+.hospital-results li:last-child {
+    border-bottom: none;
+}
+
+.available-hospitals-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.new-chat-btn {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Afacad Flux", sans-serif;
+}
+
+.new-chat-btn:hover {
+    background-color: #0056b3;
+}
+
+.copd-card {
+    width: 350px;
+    padding: 20px;
+    background-color: transparent;
+}
+
+.copd-card-header,
+.copd-card-footer {
+    margin-bottom: 20px;
+}
+
+.copd-input-group {
+    margin-bottom: 35px;
+}
+
+.copd-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #555;
+}
+
+.copd-input,
+.copd-select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    font-family: "Afacad Flux", sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.copd-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-family: "Afacad Flux", sans-serif;
+}
+
+.copd-button:hover {
+    background-color: #0056b3;
+}
+
+.copd-radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.copd-radio-group input[type="radio"] {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.copd-radio-group label {
+    margin: 0;
+    font-size: 16px;
+}
+
+.copd-radio-group+.copd-radio-group {
+    margin-top: 5px;
+}
+
+.copd-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    color: #555;
+}
+
+.copd-left {
+    flex: 1;
+    padding-left: 30px;
+}
+
+.copd-right {
+    flex: 1;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-top: 20px;
+    border-left: 1px solid #ddd;
+}
+
+.calculator-section {
+    text-align: center;
+    background-color: transparent;
+    padding: 40px;
+}
+
+.calculator-section h1#main-title {
+    font-family: "Afacad Flux", sans-serif;
+    font-size: 3rem;
+    color: #555;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+.calculator-section p#main-description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 60px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.calculator-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.calculator-box {
+    width: 180px;
+    height: 105px;
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.3rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.calculator-box:hover {
+    background-color: #0056b3;
+}
+
+.calculator-box a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    margin-top: 50px;
+}
+
+.register-button {
+    font-family: "Afacad Flux", sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+    background-color: #31ae43;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 15px;
+    display: inline-block;
+    width: 220px;
+}
+
+.ambulance-button {
+    font-family: "Afacad Flux", sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+    background-color: #cf3430;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 15px;
+    display: inline-block;
+    width: 220px;
+}
+
+.direction-button {
+    font-family: "Afacad Flux", sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+    background-color: #1B49E4;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: inline-block;
+    width: 220px;
+}
+
+.register-button:hover {
+    background-color: #288f37;
+}
+
+.ambulance-button:hover {
+    background-color: #a12826;
+}
+
+.direction-button:hover {
+    background-color: #123096;
+}
+
+.registration-container {
+    width: 800px;
+    padding: 20px;
+    background-color: transparent;
+    font-family: "Afacad Flux", sans-serif;
+}
+
+.registration-title {
+    font-size: 2rem;
+    font-family: "Afacad Flux", sans-serif;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.registration-instruction {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.registration-form-row {
+    margin-bottom: 35px;
+}
+
+.registration-form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #555;
+}
+
+.registration-form-input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    font-family: "Afacad Flux", sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.registration-submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 90%;
+    margin-top: 10px;
+    font-family: "Afacad Flux", sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.registration-submit-button:hover {
+    background-color: #0056b3;
+}
+
+.registration-form-message {
+    font-size: 22px;
+    color: green;
+    margin-top: 20px;
+}
+
+.registration-input-group {
+    margin-bottom: 35px;
+}
+
+.registration-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #555;
+    font-family: "Afacad Flux", sans-serif;
+}
+
+.registration-radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.registration-radio-group input[type="radio"] {
+    color: #555;
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.registration-radio-group label {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+    font-family: "Afacad Flux", sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.hospital-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.hospital-info {
+    flex-grow: 1;
+}
+
+.hospital-image img {
+    width: 170px;
+    height: 170px;
+    margin-right: 10px;
+}
+
+.button-container {
+    margin-bottom: 35px;
+}
+
+.sidebar-button img.icon {
+    margin-right: 16px;
+    margin-left: 13px;
+    flex-shrink: 0;
+}
+
+.button-text {
+    display: inline-block;
+}
+
+.sidebar-button .button-text {
+    vertical-align: top;
+}
+
+.healthline-page p {
+    font-family: "Afacad Flux", sans-serif;
+}
+
+.healthline-page header {
+    font-family: "Afacad Flux", sans-serif;
+}
+
+.healthline-video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 1980px;
+    max-height: 1080px;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.healthline-header {
+    font-family: "Afacad Flux", sans-serif;
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.healthline-header a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.healthline-header a.github {
+    display: flex;
+    align-items: center;
+}
+
+.healthline-content {
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.healthline-content header h1 {
+    font-size: 4em;
+    margin: 0;
+    color: #000;
+}
+
+.healthline-content header h1 span {
+    color: #d9652b;
+}
+
+.healthline-content header p {
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: #555;
+}
+
+.healthline-features {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    margin-top: 70px;
+    flex-wrap: wrap;
+}
+
+.healthline-feature {
+    text-align: center;
+}
+
+.healthline-feature img {
+    width: 160px;
+    height: 160px;
+}
+
+.healthline-feature p {
+    font-size: 1.3em;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.healthline-explore-button {
+    display: inline-block;
+    background-color: #d9652b;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.6em;
+    margin-top: 70px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Afacad Flux", sans-serif;
+}
+
+.healthline-explore-button:hover {
+    background-color: #c15425;
+}
+
+.healthline-page {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.healthline-page.fade-in {
+    opacity: 1;
+}
+
+.faq-unique-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: transparent;
+}
+
+.faq-unique-item {
+    margin-bottom: 10px;
+}
+
+.faq-unique-question {
+    font-family: "Afacad Flux", sans-serif;
+    padding: 15px;
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.faq-unique-question::after {
+    content: '\25BC';
+    position: absolute;
+    right: 20px;
+    font-size: 16px;
+}
+
+.faq-unique-answer {
+    padding: 15px;
+    display: none;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: -5px;
+    font-size: 16px;
+}
+
+.active .faq-unique-answer {
+    display: block;
+}
+
+.faq-unique-question.active::after {
+    content: '\25B2'; /* Up arrow */
+}
+
+.faq-unique-title {
+    text-align: center;
+    color: #555;
+    font-size: 3rem;
+    margin-bottom: 0px;
+}
+
+.faq-unique-description {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cvh-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Headings inside the .cvh-container */
+.cvh-container h1 {
+    text-align: left;
+    color: #d63b2e;
+}
+
+.cvh-container h2 {
+    color: #d63b2e;
+    margin-top: 30px;
+}
+
+.cvh-container h3 {
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Paragraph styles inside the .cvh-container */
+.cvh-container p {
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+/* List styles inside the .cvh-container */
+.cvh-container ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+/* Image container styles */
+.cvh-image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.cvh-image-gallery img {
+    width: calc(50% - 10px);
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Fact box inside the .cvh-container */
+.cvh-fact {
+    background-color: #d63b2e;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 0px;
+    text-align: left;
+}
+
+.cvh-fact p {
+    margin: 0px;
+    color: white;
+}
+
+.hw-blog-list h1 {
+    text-align: center;
+    color: #d63b2e;
+}
+
+.hw-blog-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.hw-blog-item {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 10px;
+}
+
+.hw-blog-item img {
+    width: 120px; /* Adjust size as needed */
+    height: 120px;
+    margin-right: 15px;
+    border-radius: 5px;
+}
+
+.hw-blog-info {
+    flex: 1;
+}
+
+.hw-blog-info h2 {
+    margin: 0;
+    color: #d63b2e;
+}
+
+.hw-blog-info p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.credit-code-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.credit-code-container {
+    padding: 40px;
+    margin-top: -120px;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+.credit-code-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.credit-code-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.credit-code-section {
+    margin-bottom: 30px;
+}
+
+.credit-code-heading {
+    font-size: 24px;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.credit-code-text {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.credit-code-link {
+    font-size: 16px;
+    color: #fb8d3e;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid #fb8d3e;
+}
+
+.credit-code-link:hover {
+    color: #e57d2a;
+    border-bottom-color: #e57d2a;
+}
+
+.credit-code-team-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.credit-code-team-member {
+    font-size: 16px;
+    color: #666;
+    margin: 8px 0;
+}

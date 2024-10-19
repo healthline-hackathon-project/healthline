@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Use global stylesheet -->
+</head>
+
+<body>
+
+  <div class="copd-container">
+    <!-- Left: BMI Calculator -->
+    <div class="copd-left">
+      <div class="copd-card">
+        <div class="copd-card-header">
+          <h2>Body Mass Index (BMI) Calculator</h2>
+          <p>Calculate your BMI and get personalized health advice.</p>
+        </div>
+
+        <div class="copd-card-content">
+          <form id="bmiForm" class="form">
+            <div class="copd-input-group">
+              <label for="height" class="copd-label">Height (cm)</label>
+              <input id="height" type="number" class="copd-input" placeholder="Enter height">
+            </div>
+
+            <div class="copd-input-group">
+              <label for="weight" class="copd-label">Weight (kg)</label>
+              <input id="weight" type="number" class="copd-input" placeholder="Enter weight">
+            </div>
+
+            <div class="copd-input-group">
+              <label for="age" class="copd-label">Age</label>
+              <input id="age" type="number" class="copd-input" placeholder="Enter age">
+            </div>
+
+            <div class="copd-input-group">
+              <label class="copd-label">Gender</label>
+              <div class="copd-radio-group">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+              </div>
+            </div>
+
+            <div class="copd-input-group">
+              <label for="waist" class="copd-label">Waist Circumference (cm)</label>
+              <input id="waist" type="number" class="copd-input" placeholder="Enter waist circumference">
+            </div>
+
+            <div class="copd-input-group">
+              <label for="hip" class="copd-label">Hip Circumference (cm)</label>
+              <input id="hip" type="number" class="copd-input" placeholder="Enter hip circumference">
+            </div>
+
+            <button type="submit" class="copd-button">CALCULATE BMI</button>
+          </form>
+
+          <div id="results" class="copd-card-footer hidden">
+            <h3>Results</h3>
+            <p id="bmiResult"></p>
+            <p id="waistHipRatioResult"></p>
+            <p id="bodyFatResult"></p>
+            <h3>Personalized Advice</h3>
+            <p id="advice"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Information Section -->
+    <div class="copd-right">
+      <h3>About BMI and Why You Should Calculate It</h3>
+      <div class="instructions">
+        <p>
+          <strong>Body Mass Index (BMI)</strong> is a measure of body fat based on height and weight that applies to
+          adult men and women. It is a quick way to assess whether you are underweight, normal weight, overweight, or
+          obese, which can help you understand your health risks.
+        </p>
+        <p>
+          Knowing your BMI is important because it gives you a general idea of your risk for conditions such as heart
+          disease, diabetes, and hypertension. However, BMI is only one factor in assessing your overall health.
+        </p>
+
+        <h3>Instructions to Calculate BMI</h3>
+        <ol>
+          <li>Enter your height in centimeters.</li>
+          <li>Enter your weight in kilograms.</li>
+          <li>Enter your age.</li>
+          <li>Select your gender (Male/Female).</li>
+          <li>Enter your waist and hip circumference for more accurate results on body fat estimation.</li>
+          <li>Click the <strong>Calculate</strong> button to see your BMI and personalized health advice.</li>
+        </ol>
+
+        <p>Ensure all fields are filled out correctly before submitting for accurate results.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('bmiForm').addEventListener('submit', function (e) {
+      e.preventDefault();  // Prevent default form submission
+
+      const height = parseFloat(document.getElementById('height').value);
+      const weight = parseFloat(document.getElementById('weight').value);
+      const age = parseFloat(document.getElementById('age').value);
+      const waist = parseFloat(document.getElementById('waist').value);
+      const hip = parseFloat(document.getElementById('hip').value);
+      const gender = document.querySelector('input[name="gender"]:checked')?.value;
+
+      // Custom validation: Check if values are empty or invalid
+      let errorMessage = "";
+
+      if (!height || height <= 0) {
+        errorMessage += "Please enter a valid positive height.\n";
+      }
+
+      if (!weight || weight <= 0) {
+        errorMessage += "Please enter a valid positive weight.\n";
+      }
+
+      if (!age || age <= 0) {
+        errorMessage += "Please enter a valid positive age.\n";
+      }
+
+      if (!waist || waist <= 0) {
+        errorMessage += "Please enter a valid positive waist circumference.\n";
+      }
+
+      if (!hip || hip <= 0) {
+        errorMessage += "Please enter a valid positive hip circumference.\n";
+      }
+
+      if (!gender) {
+        errorMessage += "Please select your gender.\n";
+      }
+
+      if (errorMessage) {
+        alert(errorMessage);
+        return;
+      }
+
+      // BMI calculation
+      const bmi = (weight / ((height / 100) ** 2)).toFixed(1);
+
+      // Waist-hip ratio calculation
+      const waistHipRatio = (waist / hip).toFixed(2);
+
+      // Body fat estimation
+      const bodyFat = gender === 'male'
+        ? (1.20 * bmi + 0.23 * age - 16.2).toFixed(1)
+        : (1.20 * bmi + 0.23 * age - 5.4).toFixed(1);
+
+      // BMI category
+      let bmiCategory = '';
+      if (bmi < 18.5) bmiCategory = 'Underweight';
+      else if (bmi < 25) bmiCategory = 'Normal weight';
+      else if (bmi < 30) bmiCategory = 'Overweight';
+      else bmiCategory = 'Obese';
+
+      // Waist-hip ratio category
+      let waistHipCategory = '';
+      if (gender === 'male') {
+        waistHipCategory = waistHipRatio <= 0.95 ? 'Low Risk' : waistHipRatio <= 1.0 ? 'Moderate Risk' : 'High Risk';
+      } else {
+        waistHipCategory = waistHipRatio <= 0.80 ? 'Low Risk' : waistHipRatio <= 0.85 ? 'Moderate Risk' : 'High Risk';
+      }
+
+      // Display advice based on results
+      let advice = 'Based on your results:\n';
+      if (bmiCategory === 'Underweight') {
+        advice += 'Increase calorie intake with nutrient-dense foods.\n';
+      } else if (bmiCategory === 'Normal weight') {
+        advice += 'Maintain your current diet and exercise routine.\n';
+      } else {
+        advice += 'Reduce calorie intake and increase physical activity.\n';
+      }
+      if (waistHipCategory === 'Moderate Risk' || waistHipCategory === 'High Risk') {
+        advice += 'Focus on abdominal exercises and reduce processed food.\n';
+      }
+
+      // Display results and advice
+      document.getElementById('bmiResult').textContent = `BMI: ${bmi} (${bmiCategory})`;
+      document.getElementById('waistHipRatioResult').textContent = `Waist-Hip Ratio: ${waistHipRatio} (${waistHipCategory})`;
+      document.getElementById('bodyFatResult').textContent = `Estimated Body Fat: ${bodyFat}%`;
+      document.getElementById('advice').textContent = advice;
+
+      document.getElementById('results').classList.remove('hidden');
+    });
+  </script>
+
+</body>
+
+</html>

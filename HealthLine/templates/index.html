@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthLine - All in one health site</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jQuery CDN -->
+</head>
+<body>
+    <div class="container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <button id="ai" class="sidebar-button ask-ai">
+                <img src="static/images/robot.png" width="22" height="22" alt="Icon" class="icon">
+                <div class="button-text">HealthLine A.I</div>
+              </button>
+              
+              <button id="risk-calculators" class="sidebar-button health-risk">
+                <img src="static/images/calculator.png" width="22" height="22" alt="Icon" class="icon">
+                <div class="button-text">Health Risk Calculators</div>
+              </button>
+              
+              <button id="bed-checker" class="sidebar-button bed-checker">
+                <img src="static/images/vacancy.png" width="22" height="22" alt="Icon" class="icon">
+                <div class="button-text">Hospital Vacancy Check</div>
+              </button>
+              
+              <button id="daily-health-blogs" class="sidebar-button health-blogs">
+                <img src="static/images/nature.png" width="22" height="22" alt="Icon" class="icon">
+                <div class="button-text">Daily Health Blogs</div>
+              </button>
+              
+              <button id="faq" class="sidebar-button faq">
+                <img src="static/images/faq.png" width="22" height="22" alt="Icon" class="icon">
+                <div class="button-text">FAQs</div>
+              </button>              
+              
+              <button id="creditsandcode" class="sidebar-button creditsandcode">
+                <img src="static/images/code.png" width="22" height="22" alt="Icon" class="icon">
+                <div class="button-text">Credit & Code</div>
+              </button>
+        </div>
+
+        <!-- Right Content Area -->
+        <div class="content" id="content-area">
+            <div class="welcome-section">
+                <h1>Welcome to HealthLine</h1>
+                <p>Choose your desired option from the left panel.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script> <!-- External JS -->
+    <script>
+      window.addEventListener('load', function () {
+          document.querySelector('.container').classList.add('fade-in');
+      });
+  </script>
+</body>
+</html>

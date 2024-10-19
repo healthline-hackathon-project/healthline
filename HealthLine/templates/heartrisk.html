@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Risk Prediction</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link global stylesheet -->
+</head>
+<body>
+
+  <div class="copd-container">
+    <div class="copd-left">
+      <div class="copd-card">
+        <div class="copd-card-header">
+          <h2>Heart Risk Assessment</h2>
+          <p>Enter your health information to assess your heart risk.</p>
+        </div>
+      
+        <div class="copd-card-content">
+          <div class="copd-input-group">
+            <label for="age" class="copd-label">Age</label>
+            <input type="number" id="age" class="copd-input" min="0" required>
+          </div>
+      
+          <div class="copd-input-group">
+            <label for="gender" class="copd-label">Gender</label>
+            <select id="gender" class="copd-select" required>
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="copd-input-group">
+            <label for="systolicBP" class="copd-label">Systolic Blood Pressure</label>
+            <input type="number" id="systolicBP" class="copd-input" required>
+          </div>
+      
+          <div class="copd-input-group">
+            <label for="diastolicBP" class="copd-label">Diastolic Blood Pressure</label>
+            <input type="number" id="diastolicBP" class="copd-input" required>
+          </div>
+      
+          <div class="copd-input-group">
+            <label for="cholesterol" class="copd-label">Cholesterol</label>
+            <input type="number" id="cholesterol" class="copd-input" required>
+          </div>
+      
+          <div class="copd-input-group">
+            <label class="copd-label">Do you smoke?</label>
+            <div class="copd-radio-group">
+              <input type="radio" name="smoke" id="smoke-yes" value="yes" required>
+              <label for="smoke-yes">Yes</label>
+            </div>
+            <div class="copd-radio-group">
+              <input type="radio" name="smoke" id="smoke-no" value="no" required>
+              <label for="smoke-no">No</label>
+            </div>
+          </div>
+      
+          <div class="copd-input-group">
+            <label class="copd-label">Do you have diabetes?</label>
+            <div class="copd-radio-group">
+              <input type="radio" name="diabetic" id="diabetic-yes" value="yes" required>
+              <label for="diabetic-yes">Yes</label>
+            </div>
+            <div class="copd-radio-group">
+              <input type="radio" name="diabetic" id="diabetic-no" value="no" required>
+              <label for="diabetic-no">No</label>
+            </div>
+          </div>
+        </div>
+      
+        <div class="copd-card-footer">
+          <button onclick="calculateHeartRisk()" class="copd-button"><strong>CALCULATE RISK</strong></button>
+          <p id="result" style="margin-top: 20px;"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="copd-right">
+      <h3>About Heart Risk and Why You Should Test</h3>
+      <div class="instructions">
+        <p>
+          <strong>Heart disease</strong> is a leading cause of death globally, and understanding your risk can help prevent heart attacks and other cardiovascular issues.
+        </p>
+        <p>
+          Factors like age, smoking, blood pressure, and cholesterol levels play a major role in assessing your heart risk. Early detection can lead to lifestyle changes or medical interventions that reduce risk.
+        </p>
+
+        <h3>Meaning of the Form Terms</h3>
+        <ul>
+          <li><strong>Age:</strong> The risk of heart disease increases with age, particularly after 50 years.</li>
+          <li><strong>Gender:</strong> Males generally have a higher risk, but post-menopausal women also face increased risk.</li>
+          <li><strong>Systolic/Diastolic Blood Pressure:</strong> Higher blood pressure indicates more force against artery walls, increasing heart disease risk.</li>
+          <li><strong>Cholesterol:</strong> High cholesterol levels can lead to plaque buildup in arteries, increasing heart attack risk.</li>
+          <li><strong>Smoking:</strong> Smoking greatly increases the risk of heart disease and stroke.</li>
+          <li><strong>Diabetes:</strong> Diabetes is a major risk factor for cardiovascular diseases.</li>
+        </ul>
+
+        <h3>Instructions</h3>
+        <ol>
+          <li>Enter your age, gender, and blood pressure values.</li>
+          <li>Provide your cholesterol level, smoking status, and whether you have diabetes.</li>
+          <li>Click the <strong>Calculate Risk</strong> button to assess your risk of heart disease.</li>
+        </ol>
+        <p>Make sure to fill out all fields accurately for the best results.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function calculateHeartRisk() {
+    const age = parseInt(document.getElementById('age').value);
+    const gender = document.getElementById('gender').value;
+    const systolicBP = parseInt(document.getElementById('systolicBP').value);
+    const diastolicBP = parseInt(document.getElementById('diastolicBP').value);
+    const cholesterol = parseInt(document.getElementById('cholesterol').value);
+    const smoker = document.querySelector('input[name="smoke"]:checked')?.value;
+    const diabetic = document.querySelector('input[name="diabetic"]:checked')?.value;
+
+    let errorMessage = "";
+
+    if (isNaN(age) || age <= 0) {
+      errorMessage += "Please enter a valid age.\n";
+    }
+
+    if (!gender) {
+      errorMessage += "Please select your gender.\n";
+    }
+
+    if (isNaN(systolicBP) || systolicBP < 0) {
+      errorMessage += "Please enter a valid systolic blood pressure.\n";
+    }
+
+    if (isNaN(diastolicBP) || diastolicBP < 0) {
+      errorMessage += "Please enter a valid diastolic blood pressure.\n";
+    }
+
+    if (isNaN(cholesterol) || cholesterol < 0) {
+      errorMessage += "Please enter a valid cholesterol level.\n";
+    }
+
+    if (!smoker) {
+      errorMessage += "Please select your smoking status.\n";
+    }
+
+    if (!diabetic) {
+      errorMessage += "Please select your diabetes status.\n";
+    }
+
+    if (errorMessage) {
+      alert(errorMessage);
+      return;
+    }
+
+    let riskScore = 0;
+
+    if (age > 50) riskScore += 2;
+    if (gender === "male") riskScore += 1;
+    if (systolicBP > 140) riskScore += 2;
+    if (diastolicBP > 90) riskScore += 2;
+    if (cholesterol > 200) riskScore += 2;
+    if (smoker === "yes") riskScore += 2;
+    if (diabetic === "yes") riskScore += 2;
+
+    let resultText = "";
+
+    if (riskScore <= 3) {
+      resultText = "Low risk of heart disease.";
+    } else if (riskScore <= 7) {
+      resultText = "Moderate risk of heart disease. Consider discusing with a professional.";
+    } else {
+      resultText = "High risk of heart disease. Please consult with a professional.";
+    }
+
+    document.getElementById('result').innerText = resultText;
+  }
+</script>
+
+</body>
+</html>

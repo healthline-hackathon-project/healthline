@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Collection</title>
+    <link rel="stylesheet" href="static/styles.css">
+
+</head>
+<body>
+
+<h1>Daily Health Blogs</h1>
+<ul class="hw-blog-list">
+    <li class="hw-blog-item">
+        <img src="https://th.bing.com/th/id/OIP.n1LQd3lZBdaCZwXWtPVpLwHaD4?w=1200&h=630&rs=1&pid=ImgDetMain" alt="cardiovascular health">
+        <div class="hw-blog-info">
+            <h2><a href="/blog1" class="blog-link" data-blog="blog1">The Importance of Nutrition for a Healthy Life</a></h2>
+            <p>This blog discusses the vital role of nutrition in maintaining a healthy lifestyle. It covers essential nutrients, dietary guidelines, and tips for making healthier food choices.</p>
+        </div>
+    </li>
+    <li class="hw-blog-item">
+        <img src="https://th.bing.com/th/id/OIP.BwSfXUuJpkxwpBDILj1xuwHaHa?rs=1&pid=ImgDetMain" alt="Mental Health Awareness: Understanding and Supporting Mental Well-being">
+        <div class="hw-blog-info">
+            <h2><a href="/blog2" class="blog-link" data-blog="blog2">The Benefits of Mindfulness and Meditation</a></h2>
+            <p>Explore the numerous benefits of mindfulness and meditation, including stress reduction, improved focus, and enhanced emotional well-being. Learn techniques to incorporate mindfulness into your daily life.</p>
+        </div>
+    </li>
+    <li class="hw-blog-item">
+        <img src="https://th.bing.com/th/id/R.32c44b5b7ceab6fa3246ef202b8ae849?rik=I6m68NrlxJVfVQ&riu=http%3a%2f%2fcdn.shopify.com%2fs%2ffiles%2f1%2f1281%2f4359%2ft%2f15%2fassets%2fE6939565026ebookMain.png%3fv%3d1532365397&ehk=Cms4%2fdF68JPo0WqJAHYmE1RqnKn61uz9Z1Wjgsr4gvc%3d&risl=&pid=ImgRaw&r=0" alt="The Importance of Physical Activity for Mental Health">
+        <div class="hw-blog-info">
+            <h2><a href="/blog3" class="blog-link" data-blog="blog3">The Importance of Physical Activity for Overall Well-Being</a></h2>
+            <p>Delve into the significance of physical activity for both mental and physical health. This blog provides insights on recommended activity levels, different forms of exercise, and motivation tips.</p>
+        </div>
+    </li>
+    <li class="hw-blog-item">
+        <img src="https://images.versus.io/00-blog-pics/00-post_header/teadergrafik_nutritions.jpg" alt="Understanding the Basics of Nutrition for Optimal Physical Health">
+        <div class="hw-blog-info">
+            <h2><a href="/blog4" class="blog-link" data-blog="blog4">Understanding Mental Health: A Comprehensive Overview</a></h2>
+            <p>This comprehensive overview of mental health covers common disorders, symptoms, treatment options, and strategies for maintaining mental wellness. Empower yourself with knowledge about mental health.</p>
+        </div>
+    </li>
+    <li class="hw-blog-item">
+        <img src="https://stjude.scene7.com/is/image/stjude/shutterstock_1048696490?fit=crop,1&wid=1200" alt="The Importance of Physical Activity for Overall Well-Being">
+        <div class="hw-blog-info">
+            <h2><a href="/blog5" class="blog-link" data-blog="blog5">The Importance of Nutrition for a Healthy Life</a></h2>
+            <p>This blog discusses the vital role of nutrition in maintaining a healthy lifestyle. It covers essential nutrients, dietary guidelines, and tips for making healthier food choices.</p>
+        </div>
+    </li>
+</ul>
+
+<div id="blog-content-area"></div>
+
+<script>
+    $(document).ready(function () {
+    $('.blog-link').on('click', function (e) {
+        e.preventDefault();
+
+        const blogId = $(this).data('blog'); 
+        const url = $(this).attr('href'); 
+
+        $("#blog-content-area").fadeOut(300, function () {
+            $.ajax({
+                url: url, 
+                method: 'GET',
+                success: function (response) {
+                    $("#content-area").html(response);
+                    $("#content-area").fadeIn(300);
+                },
+                error: function () {
+                    $("#content-area").html("<h1>Error</h1><p>Sorry, the blog content could not be loaded.</p>");
+                    $("#content-area").fadeIn(300);
+                }
+            });
+        });
+    });
+});
+
+</script>
+
+</body>
+</html>

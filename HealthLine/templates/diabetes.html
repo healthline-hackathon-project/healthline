@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> <!-- Link global stylesheet -->
+  <title>Diabetes Risk Assessment</title>
+</head>
+<body>
+
+  <div class="copd-container">
+    <div class="copd-left">
+      <div class="copd-card">
+        <div class="copd-card-header">
+          <h2>Diabetes Risk Assessment</h2>
+          <p>Enter your information to assess your risk for diabetes.</p>
+        </div>
+      
+        <div class="copd-card-content">
+          <div class="copd-input-group">
+            <label for="age" class="copd-label">Age</label>
+            <input type="number" id="age" class="copd-input" min="0" required>
+          </div>
+          
+          <div class="copd-input-group">
+            <label for="bmi" class="copd-label">Body Mass Index (BMI)</label>
+            <input type="number" id="bmi" class="copd-input" step="0.1" required>
+          </div>
+
+          <div class="copd-input-group">
+            <label for="familyHistory" class="copd-label">Family History of Diabetes</label>
+            <select id="familyHistory" class="copd-select" required>
+              <option value="no">No</option>
+              <option value="yes">Yes</option>
+            </select>
+          </div>
+
+          <div class="copd-input-group">
+            <label for="bloodPressure" class="copd-label">Blood Pressure</label>
+            <select id="bloodPressure" class="copd-select" required>
+              <option value="normal">Normal</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="copd-input-group">
+            <label for="cholesterol" class="copd-label">Cholesterol Levels</label>
+            <select id="cholesterol" class="copd-select" required>
+              <option value="normal">Normal</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+
+          <div class="copd-input-group">
+            <label for="weight" class="copd-label">Weight (kg)</label>
+            <input type="number" id="weight" class="copd-input" min="0" required> 
+          </div>
+      
+          <div class="copd-input-group">
+            <label for="activityLevel" class="copd-label">Physical Activity Level</label>
+            <select id="activityLevel" class="copd-select" required>
+              <option value="" disabled selected>Select activity level</option>
+              <option value="sedentary">Sedentary</option>
+              <option value="active">Active</option>
+              <option value="veryActive">Very Active</option>
+            </select>
+          </div>
+        </div>
+      
+        <div class="copd-card-footer">
+          <button onclick="calculateDiabetesRisk()" class="copd-button"><strong>CALCULATE RISK</strong></button>
+          <p id="result" style="margin-top: 20px;"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="copd-right">
+      <h3>About Diabetes and Why You Should Test</h3>
+      <div class="instructions">
+        <p>
+          <strong>Diabetes</strong> is a chronic health condition that affects how your body turns food into energy. 
+          Understanding your risk factors is crucial for prevention and management.
+        </p>
+        <p>
+          Risk factors include age, family history, weight, and physical activity levels. Early detection can help manage the condition effectively.
+        </p>
+        
+        <h3>Meaning of the Form Terms</h3>
+        <ul>
+          <li><strong>Age:</strong> Your current age in years. Risk increases with age.</li>
+          <li><strong>BMI:</strong> A measure of body fat based on your height and weight.</li>
+          <li><strong>Family History of Diabetes:</strong> Whether you have a family history of diabetes.</li>
+          <li><strong>Blood Pressure:</strong> Your blood pressure level, which can affect your risk.</li>
+          <li><strong>Cholesterol Levels:</strong> Your cholesterol levels, influencing overall health.</li>
+          <li><strong>Weight:</strong> Your weight in kilograms, which can influence your risk.</li>
+          <li><strong>Physical Activity Level:</strong> Your level of physical activity, affecting overall health.</li>
+        </ul>
+        
+        <h3>Instructions</h3>
+        <ol>
+          <li>Enter your age in years.</li>
+          <li>Input your Body Mass Index (BMI).</li>
+          <li>Select your family history of diabetes (Yes, No).</li>
+          <li>Select your blood pressure (Normal, High).</li>
+          <li>Select your cholesterol levels (Normal, High).</li>
+          <li>Input your weight in kilograms.</li>
+          <li>Select your level of physical activity from the dropdown.</li>
+          <li>Click the <strong>Calculate Risk</strong> button to see your assessment.</li>
+        </ol>
+        <p>Ensure all fields are filled out correctly before submitting for accurate results.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function calculateDiabetesRisk() {
+    const age = parseInt(document.getElementById('age').value);
+    const bmi = parseFloat(document.getElementById('bmi').value);
+    const familyHistory = document.getElementById('familyHistory').value;
+    const bloodPressure = document.getElementById('bloodPressure').value;
+    const cholesterol = document.getElementById('cholesterol').value;
+    const weight = parseInt(document.getElementById('weight').value);
+    const activityLevel = document.getElementById('activityLevel').value;
+
+    let errorMessage = "";
+
+    if (isNaN(age) || age <= 0) {
+      errorMessage += "Please enter a valid age.\n";
+    }
+
+    if (isNaN(bmi) || bmi <= 0) {
+      errorMessage += "Please enter a valid BMI.\n";
+    }
+
+    if (!familyHistory) {
+      errorMessage += "Please select your family history of diabetes.\n";
+    }
+
+    if (!bloodPressure) {
+      errorMessage += "Please select your blood pressure level.\n";
+    }
+
+    if (!cholesterol) {
+      errorMessage += "Please select your cholesterol level.\n";
+    }
+
+    if (isNaN(weight) || weight < 0) {
+      errorMessage += "Please enter a valid weight.\n";
+    }
+
+    if (!activityLevel) {
+      errorMessage += "Please select your activity level.\n";
+    }
+
+    if (errorMessage) {
+      alert(errorMessage);
+      return;
+    }
+
+    let riskScore = 0;
+
+    if (age >= 45) riskScore += 3;
+    else if (age >= 35) riskScore += 2;
+
+    if (bmi >= 30) riskScore += 3; // Assuming BMI of 30+ is high risk
+    else if (bmi >= 25) riskScore += 2;
+
+    if (familyHistory === "yes") riskScore += 3;
+
+    if (bloodPressure === "high") riskScore += 2;
+
+    if (cholesterol === "high") riskScore += 2;
+
+    if (weight >= 100) riskScore += 3;
+    else if (weight >= 80) riskScore += 2;
+
+    if (activityLevel === "sedentary") riskScore += 2;
+    else if (activityLevel === "active") riskScore += 1;
+
+    let resultText = "";
+
+    if (riskScore >= 8) {
+      resultText = "High risk of diabetes. Please consult a healthcare professional.";
+    } else if (riskScore >= 5) {
+      resultText = "Moderate risk of diabetes. Consider discussing with a doctor.";
+    } else {
+      resultText = "Low risk of diabetes. Maintain a healthy lifestyle.";
+    }
+
+    document.getElementById('result').innerText = resultText;
+  }
+</script>
+
+</body>
+</html>

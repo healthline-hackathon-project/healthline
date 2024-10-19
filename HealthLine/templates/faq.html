@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs</title>
+    <link rel="stylesheet" href="static/styles.css"> <!-- Linking to external CSS -->
+</head>
+<body>
+
+    <div class="faq-unique-container">
+        <h1 class="faq-unique-title">FAQs</h1>
+        <p class="faq-unique-description">Read some frequently asked questions about our site.</p>
+
+        <div class="faq-unique-item">
+            <button class="faq-unique-question">What is HealthLine?</button>
+            <div class="faq-unique-answer">
+                <p>HealthLine is a personalized healthcare platform that provides users with a variety of health tools, including AI-powered health consultations, a hospital vacancy checker, health risk calculators, and various other features to improve healthcare accessibility of all the it's users.</p>
+            </div>
+        </div>
+
+        <div class="faq-unique-item">
+            <button class="faq-unique-question">How to use the Hospital Vacancy Checker?</button>
+            <div class="faq-unique-answer">
+                <p>To use the Hospital Vacancy Checker, simply enter your location pincode, your city, and the category of the hospital in the search form, and the tool will display real-time availability of beds and other hospital resources in nearby facilities.</p>
+            </div>
+        </div>
+
+        <div class="faq-unique-item">
+            <button class="faq-unique-question">What are Health Risk Calculators?</button>
+            <div class="faq-unique-answer">
+                <p>Health Risk Calculators are tools designed to assess your risk for various health conditions based on the information you provide, such as age, gender, lifestyle, and medical history. These calculators offer personalized insights and recommendations for better health management.</p>
+            </div>
+        </div>
+
+        <div class="faq-unique-item">
+            <button class="faq-unique-question">I am having issues with the site, whom should I contact?</button>
+            <div class="faq-unique-answer">
+                <p>Visit the Credits section of the site where you will find the developers' GitHub and LinkedIn profiles. You can contact them there for assistance.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const faqQuestions = document.querySelectorAll('.faq-unique-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                question.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+
+</body>
+</html>

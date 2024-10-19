@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>HealthLine A.I</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <h1>HealthLine A.I</h1>
+
+    <div class="chat-container" id="chat-box">
+    </div>
+
+    <button id="new-chat-btn" class="new-chat-btn"><strong>CLEAR CHAT</strong></button>
+
+    <div class="chat-input-container">
+        <input type="text" id="chatInput" placeholder="Ask HealthLine AI...">
+        <button id="send-btn" class="chat-send-button"><strong>SEND</strong></button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Function to load chat history and include welcome message if needed
+            function loadChatHistory() {
+                $.get('/load-chat-history', function (data) {
+                    $('#chat-box').html('');  // Clear the current chat-box
+
+                    // If there's no chat history, display the welcome message
+                    if (data.chat_history.length === 0) {
+                        $('#chat-box').html('<div class="message bot-message">Welcome to your all-in-one HealthLine A.I <br> Ask me anything regarding your health. I will always be here to help you out! <br> How can I assist you today with your health concerns?</div>');
+                    } else {
+                        // Loop through chat history and append messages
+                        data.chat_history.forEach(function (message) {
+                            if (message.user) {
+                                $('#chat-box').append('<div class="message user-message">' + message.user + '</div>');
+                            }
+                            if (message.bot) {
+                                $('#chat-box').append('<div class="message bot-message">' + message.bot.replace(/\n/g, '<br>') + '</div>');
+                            }
+                        });
+                    }
+
+                    // Scroll to the bottom after loading the history
+                    scrollToBottom();
+                });
+            }
+
+            // Scroll to the bottom of the chat box
+            function scrollToBottom() {
+                const chatBox = document.getElementById('chat-box');
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+
+            // Handle send button click
+            $('#send-btn').click(function () {
+                const userInput = $('#chatInput').val();
+                if (userInput !== '') {
+                    $.ajax({
+                        url: '/chat',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({ user_input: userInput }),
+                        success: function (response) {
+                            $('#chat-box').append('<div class="message user-message">' + userInput + '</div>');
+                            $('#chat-box').append('<div class="message bot-message">' + response.response.replace(/\n/g, '<br>') + '</div>');
+                            $('#chatInput').val('');  // Clear input box
+
+                            // Scroll to the bottom after new messages
+                            scrollToBottom();
+                        }
+                    });
+                }
+            });
+
+            // Handle "New Chat" button click
+            $('#new-chat-btn').click(function (e) {
+                e.preventDefault(); // Prevent default button behavior
+
+                // Fade out the chat box over 600ms, then clear the chat
+                $('#chat-box').fadeOut(600, function () {
+                    $.ajax({
+                        url: '/clear-chat',
+                        type: 'POST',
+                        success: function (response) {
+                            if (response.status === 'success') {
+                                // Append welcome message after clearing the chat
+                                $('#chat-box').html('<div class="message bot-message">Welcome to your all-in-one HealthLine A.I <br> Ask me anything regarding your health. I will always be here to help you out! <br> How can I assist you today with your health concerns?</div>');
+
+                                // Fade the chat box back in after clearing
+                                $('#chat-box').fadeIn(300);
+
+                                // Scroll to the bottom after clearing
+                                scrollToBottom();
+                            }
+                        },
+                        error: function () {
+                            alert('Error clearing chat.');
+                        }
+                    });
+                });
+            });
+
+            // Load chat history on page load, including welcome message if necessary
+            loadChatHistory();
+        });
+
+
+    </script>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+</body>
+
+</html>

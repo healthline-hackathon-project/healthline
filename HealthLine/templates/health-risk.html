@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Risk Calculators</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="calculator-section">
+        <h1 id="main-title">Health Risk Calculators</h1>
+        <p id="main-description">
+            Select the risk calculator that you want to use. Each calculator will ask for some basic health information 
+            to assess your risk levels. This is not a substitute for professional medical advice.
+        </p>
+        
+        <div class="calculator-container">
+            <div class="calculator-box" id="heart-risk">
+                <a href="javascript:void(0);" onclick="loadCalculatorPage('heart-risk')">Heart Risk Calculator</a>
+            </div>
+            <div class="calculator-box" id="copd-risk">
+                <a href="javascript:void(0);" onclick="loadCalculatorPage('copd-risk')">COPD Risk Calculator</a>
+            </div>
+            <div class="calculator-box" id="diabetes-risk">
+                <a href="javascript:void(0);" onclick="loadCalculatorPage('bmi')">Body Mass Index Calculator</a>
+            </div>
+            <div class="calculator-box" id="falana-risk">
+                <a href="javascript:void(0);" onclick="loadCalculatorPage('diabetes-risk')">Diabetes Risk Calculator</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="calculator-content">
+    </div>
+
+    <script>
+        function loadCalculatorPage(calculator) {
+            $.ajax({
+                url: '/calculator/' + calculator,
+                type: 'GET',
+                success: function(response) {
+                    $('#calculator-content').fadeOut(300, function() {
+                        $('#calculator-content').html(response).fadeIn(300);
+                    });
+                },
+                error: function() {
+                    $('#calculator-content').html('<p>Something went wrong. Please try again.</p>');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

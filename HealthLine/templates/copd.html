@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> <!-- Link global stylesheet -->
+  <title>COPD Risk Assessment</title>
+</head>
+<body>
+
+  <div class="copd-container">
+    <div class="copd-left">
+      <div class="copd-card">
+        <div class="copd-card-header">
+          <h2>COPD Risk Assessment</h2>
+          <p>Enter your information to assess your risk for Chronic Obstructive Pulmonary Disease (COPD).</p>
+        </div>
+      
+        <div class="copd-card-content">
+          <div class="copd-input-group">
+            <label for="age" class="copd-label">Age</label>
+            <input type="number" id="age" class="copd-input" min="0">
+          </div>
+      
+          <div class="copd-input-group">
+            <label class="copd-label">Smoking Status</label>
+            <div class="copd-radio-group">
+              <input type="radio" name="smokingStatus" id="never" value="never">
+              <label for="never">Never</label>
+            </div>
+            <div class="copd-radio-group">
+              <input type="radio" name="smokingStatus" id="former" value="former">
+              <label for="former">Former</label>
+            </div>
+            <div class="copd-radio-group">
+              <input type="radio" name="smokingStatus" id="current" value="current">
+              <label for="current">Current</label>
+            </div>
+          </div>
+      
+          <div class="copd-input-group">
+            <label for="packYears" class="copd-label">Pack Years</label>
+            <input type="number" id="packYears" class="copd-input" min="0"> 
+          </div>
+      
+          <div class="copd-input-group">
+            <label for="exposure" class="copd-label">Occupational/Environmental Exposure</label>
+            <select id="exposure" class="copd-select" required>
+              <option value="" disabled selected>Select exposure level</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+      
+        <div class="copd-card-footer">
+          <button onclick="calculateRisk()" class="copd-button"><strong>CALCULATE RISK</strong></button>
+          <p id="result" style="margin-top: 20px;"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="copd-right">
+      <h3>About COPD and Why You Should Test</h3>
+      <div class="instructions">
+        <p>
+          <strong>Chronic Obstructive Pulmonary Disease (COPD)</strong> is a chronic lung condition that causes breathing difficulties. 
+          It is often caused by long-term exposure to harmful gases or particulate matter, such as from cigarette smoke or environmental pollutants.
+        </p>
+        <p>
+          COPD symptoms include shortness of breath, chronic cough, and frequent lung infections. Early detection is crucial, as it can help slow the progression 
+          of the disease and improve quality of life. This test helps you assess your risk of developing COPD based on factors such as age, smoking habits, 
+          and occupational exposure to harmful substances.
+        </p>
+        
+        <h3>Meaning of the Form Terms</h3>
+        <ul>
+          <li><strong>Age:</strong> Your current age in years. COPD risk increases with age, particularly after 40 years.</li>
+          <li><strong>Smoking Status:</strong> Whether you are a current smoker, a former smoker, or have never smoked. Smoking is a primary cause of COPD.</li>
+          <li><strong>Pack Years:</strong> The number of years you've smoked, multiplied by the average number of packs per day.</li>
+          <li><strong>Occupational/Environmental Exposure:</strong> The level of exposure to harmful substances (such as chemicals, dust, or smoke) in your work environment.</li>
+        </ul>
+        
+        <h3>Instructions</h3>
+        <ol>
+          <li>Enter your age in years.</li>
+          <li>Select your smoking status (Never, Former, Current).</li>
+          <li>Input the number of pack years you have smoked.</li>
+          <li>Select your level of occupational/environmental exposure from the dropdown.</li>
+          <li>Click the <strong>Calculate Risk</strong> button to see your assessment.</li>
+        </ol>
+        <p>Ensure all fields are filled out correctly before submitting for accurate results.</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function calculateRisk() {
+    const age = parseInt(document.getElementById('age').value);
+    const smokingStatus = document.querySelector('input[name="smokingStatus"]:checked')?.value;
+    const packYears = parseInt(document.getElementById('packYears').value);
+    const exposureLevel = document.getElementById('exposure').value;
+
+    let errorMessage = "";
+
+    if (isNaN(age) || age <= 0) {
+      errorMessage += "Please enter a valid age.\n";
+    }
+
+    if (!smokingStatus) {
+      errorMessage += "Please select your smoking status.\n";
+    }
+
+    if (isNaN(packYears) || packYears < 0) {
+      errorMessage += "Please enter a valid number of pack years.\n";
+    }
+
+    if (!exposureLevel) {
+      errorMessage += "Please select an exposure level.\n";
+    }
+
+    if (errorMessage) {
+      alert(errorMessage);
+      return;
+    }
+
+    let riskScore = 0;
+
+    if (age >= 65) riskScore += 3;
+    else if (age >= 40) riskScore += 2;
+
+    if (smokingStatus === "current") riskScore += 3;
+    else if (smokingStatus === "former") riskScore += 2;
+
+    if (packYears >= 30) riskScore += 3;
+    else if (packYears >= 10) riskScore += 2;
+
+    if (exposureLevel === "high") riskScore += 2;
+    else if (exposureLevel === "medium") riskScore += 1;
+
+    let resultText = "";
+
+    if (riskScore >= 8) {
+      resultText = "High risk of COPD. Please consult a healthcare professional.";
+    } else if (riskScore >= 5) {
+      resultText = "Moderate risk of COPD. Consider discussing with a doctor.";
+    } else {
+      resultText = "Low risk of COPD. Maintain a healthy lifestyle.";
+    }
+
+    document.getElementById('result').innerText = resultText;
+  }
+</script>
+
+</body>
+</html>

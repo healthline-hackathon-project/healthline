@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+    <title>HealthLine</title>
+</head>
+
+<body>
+
+    <div class="healthline-page">
+        <video autoplay muted loop class="healthline-video-background">
+            <source src="static/images/Welcome to HealthLine.mp4" type="video/mp4">
+        </video>
+
+        <div class="healthline-header">
+            <a href="/login">Log in</a>
+            <a href="https://github.com/AnishSambhwani8278/healthline" target="_blank" class="github">GitHub</a>
+        </div>
+
+        <div class="healthline-content">
+            <header>
+                <h1>Welcome to <span>HealthLine</span></h1>
+                <p>Your All-in-One Solution to Personalized Healthcare</p>
+            </header>
+
+            <section class="healthline-features">
+                <div class="healthline-feature">
+                    <img src="static/images/aiicon.png" alt="HealthLine AI">
+                    <p>HealthLine A.I Chatbot</p>
+                </div>
+                <div class="healthline-feature">
+                    <img src="static/images/hospitalicon.png" alt="Hospital Checker">
+                    <p>Hospital Vacancy Checker</p>
+                </div>
+                <div class="healthline-feature">
+                    <img src="static/images/calculatoricon.png" alt="Health Risk Calculators">
+                    <p>Health Risk Calculators</p>
+                </div>
+            </section>
+
+            <header>
+                <p>and many more...</p>
+            </header>
+            <a href="/dashboard" class="healthline-explore-button">Explore →</a>
+        </div>
+    </div>
+
+    <script>
+        // Wait until the page is fully loaded
+        window.addEventListener('load', function () {
+            document.querySelector('.healthline-page').classList.add('fade-in');
+        });
+    </script>
+</body>
+
+</html>

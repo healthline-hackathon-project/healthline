@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Hospital Bed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jQuery CDN -->
+</head>
+<body>
+    <div class="registration-container">
+        <h1>Register for Hospital Bed</h1>
+        <p>Please fill out the form below to register for a hospital bed.</p>
+    
+        <form id="registrationForm" class="registration-form">
+    
+            <!-- Personal Information -->
+            <div class="registration-form-row">
+                <label class="registration-form-label" for="name">Your Name:</label>
+                <input class="registration-form-input" type="text" id="name" name="name" placeholder="Enter your name..." required>
+            </div>
+    
+            <div class="registration-form-row">
+                <label class="registration-form-label" for="dob">Date of Birth:</label>
+                <input class="registration-form-input" type="text" id="dob" name="dob" placeholder="DD/MM/YYYY" required>
+            </div>
+
+            <div class="registration-input-group">
+                <label class="registration-label">Gender</label>
+                <div class="registration-radio-group">
+                    <input type="radio" name="gender" id="registration-gender-male" value="male" required>
+                    <label for="registration-gender-male">Male</label>
+                    
+                    <input type="radio" name="gender" id="registration-gender-female" value="female" required>
+                    <label for="registration-gender-female">Female</label>
+                    
+                    <input type="radio" name="gender" id="registration-gender-other" value="other" required>
+                    <label for="registration-gender-other">Other</label>
+                </div>
+            </div>            
+    
+            <div class="registration-form-row">
+                <label class="registration-form-label" for="email">Your Email:</label>
+                <input class="registration-form-input" type="text" id="email" name="email" placeholder="Enter your email..." required>
+            </div>
+    
+            <div class="registration-form-row">
+                <label class="registration-form-label" for="phone">Phone Number:</label>
+                <input class="registration-form-input" type="text" id="phone" name="phone" placeholder="Enter your phone number..." required>
+            </div>
+    
+            <div class="registration-form-row">
+                <label class="registration-form-label" for="address">Home Address:</label>
+                <input class="registration-form-input" type="text" id="address" name="address" placeholder="Enter your address..." required>
+            </div>
+    
+            <!-- Emergency Contact Information -->
+            <h3>Emergency Contact Information</h3>
+    
+            <div class="registration-form-row">
+                <label class="registration-form-label" for="emergencyName">Emergency Contact Name:</label>
+                <input class="registration-form-input" type="text" id="emergencyName" name="emergencyName" placeholder="Enter contact name..." required>
+            </div>
+    
+            <div class="registration-form-row">
+                <label class="registration-form-label" for="emergencyPhone">Emergency Contact Phone:</label>
+                <input class="registration-form-input" type="text" id="emergencyPhone" name="emergencyPhone" placeholder="Enter contact phone number..." required>
+            </div>
+    
+            <!-- Insurance Information -->
+            <h3>Insurance Information</h3>
+    
+            <div class="registration-form-row">
+                <label class="registration-form-label" for="insuranceProvider">Insurance Provider:</label>
+                <input class="registration-form-input" type="text" id="insuranceProvider" name="insuranceProvider" placeholder="Enter insurance provider name...">
+            </div>
+    
+            <div class="registration-form-row">
+                <label class="registration-form-label" for="insuranceNumber">Insurance Number:</label>
+                <input class="registration-form-input" type="text" id="insuranceNumber" name="insuranceNumber" placeholder="Enter insurance number...">
+            </div>
+    
+            <button class="registration-submit-button" type="submit"><strong>SUBMIT</strong></button>
+        </form>
+    
+        <div id="formMessage" class="registration-form-message hidden"></div>
+    </div>
+    
+
+    <script>
+        // Form submission handling
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Show a success message
+            document.getElementById('formMessage').innerText = 'Form submitted successfully! Please head to the hospital.';
+            document.getElementById('formMessage').classList.remove('hidden');
+
+            // Clear the form
+            document.getElementById('registrationForm').reset();
+        });
+    </script>
+
+</body>
+</html>

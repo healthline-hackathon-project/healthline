@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Vacancy Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- jQuery CDN -->
+</head>
+<body>
+    <div class="hospital-checker-container">
+        <h1 class="checker-title">Hospital Vacancy Checker</h1>
+        <p class="checker-instruction">Please enter the details below so we can suggest you the best hospitals at your location.</p>
+
+        <form id="bed-checker-form" class="hospital-checker-form">
+            <div class="form-row">
+                <label class="form-label" for="pincode">Pincode:</label>
+                <input class="form-input" type="text" id="pincodeInput" name="pincode" placeholder="Enter your pincode..." required>
+            </div>
+
+            <div class="form-row">
+                <label class="form-label" for="city">City:</label>
+                <input class="form-input" type="text" id="cityInput" name="city" placeholder="Enter your city..." required>
+            </div>
+
+            <div class="form-row">
+                <label class="form-label" for="problem">Problem Category:</label>
+                <input class="form-input" type="text" id="problemInput" name="problem" placeholder="Ex: General, Cardiology, Psycology..." required>
+            </div>
+
+            <button class="check-button" type="button" id="check-hospitals-btn"><strong>CHECK AVAILABILITY</strong></button>
+        </form>
+
+        <div id="hospital-results" class="hospital-results"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+</body>
+</html>
