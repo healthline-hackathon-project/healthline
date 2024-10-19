@@ -1,3 +1,11 @@
+Project Authors
+
+Anish Sambhwani: https://github.com/AnishSambhwani8278
+
+Aniket Panday: https://github.com/aniketpanday-hub
+
+Chahat Modi: https://github.com/ChahatModi18
+
 The HealthLine project is an innovative healthcare platform designed to provide users with personalized health insights and easy access to medical facilities. The platform is aimed at empowering users with tools to assess their health risks, find hospital beds, and get real-time health advice from an AI-powered chatbot. Built using HTML, CSS, and Python Flask for the backend, HealthLine integrates advanced features like AI chatbots and health risk calculators, providing a seamless experience for users looking to monitor their health and make informed decisions.
 
 Key Features of HealthLine: AI Chatbot for Health Assistance The platform features an intelligent AI chatbot that assists users with general health concerns. Integrated with the Gemini API, the chatbot helps users determine whether they need to visit a doctor, providing advice based on user input. It serves as a first-level support system for common health issues.
