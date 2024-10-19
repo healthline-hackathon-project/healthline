@@ -1,3 +1,5 @@
+Download the .exe file to try HealthLine on your Windows: https://drive.google.com/file/d/1JOAlsDLUdvMedcKRitl-kux8JRTKyAAG/view
+
 Project Authors
 
 Anish Sambhwani (Backend, AI Chatbot, Hospital Vacancy Check, Interface): https://github.com/AnishSambhwani8278
