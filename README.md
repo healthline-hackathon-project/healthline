@@ -1,10 +1,10 @@
 Project Authors
 
-Anish Sambhwani: https://github.com/AnishSambhwani8278
+Anish Sambhwani (Backend, AI Chatbot, Hospital Vacancy Check, Interface): https://github.com/AnishSambhwani8278
 
-Aniket Panday: https://github.com/aniketpanday-hub
+Aniket Panday (Health Risk Calculators, Login Page, Register Page): https://github.com/aniketpanday-hub
 
-Chahat Modi: https://github.com/ChahatModi18
+Chahat Modi (Daily Health Blogs, FAQ Page): https://github.com/ChahatModi18
 
 The HealthLine project is an innovative healthcare platform designed to provide users with personalized health insights and easy access to medical facilities. The platform is aimed at empowering users with tools to assess their health risks, find hospital beds, and get real-time health advice from an AI-powered chatbot. Built using HTML, CSS, and Python Flask for the backend, HealthLine integrates advanced features like AI chatbots and health risk calculators, providing a seamless experience for users looking to monitor their health and make informed decisions.
 
