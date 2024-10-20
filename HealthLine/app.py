@@ -11,7 +11,7 @@ app.secret_key = 'efojo'
 app.config['SESSION_TYPE'] = 'filesystem' 
 Session(app)
 
-genai.configure(api_key="AIzaSyBP8bNL0bHyurTuaCZ7kHyfX88Ie5byRAk")
+genai.configure(api_key="PutGemeiniApiKey")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 db = SQLAlchemy(app)
