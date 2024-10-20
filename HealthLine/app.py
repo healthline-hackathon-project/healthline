@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
-app.secret_key = 'efojo' 
+app.secret_key = 'put_any_secret_key 
 app.config['SESSION_TYPE'] = 'filesystem' 
 Session(app)
 
